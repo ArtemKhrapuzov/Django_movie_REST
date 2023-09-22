@@ -1,3 +1,4 @@
+from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -49,10 +50,16 @@ class AddStarRatingView(APIView):
             return Response(status=400)
 
 
+class ActorListView(generics.ListAPIView):
+    """Вывод списка актеров и режисеров"""
+    queryset = Actor.objects.all()
+    serializer_class = ActorListSerializer
 
 
-
-
+class ActorDetailView(generics.RetrieveAPIView):
+    """Вывод списка актеров и режисеров"""
+    queryset = Actor.objects.all()
+    serializer_class = ActorDetailSerializer
 
 
 
